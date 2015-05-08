@@ -9,11 +9,11 @@
 	<version>1.0.0</version>
 	<packaging>maven-plugin</packaging>
 
-	<name>${project.groupId}:${project.artifactId}</name>
+	<name>git-changelog-maven-plugin</name>
 	<description>Finds all git commits that's in the current branch but not in another. The typical use case is to see what changes are in this branch in
 		relation to the production one. Output is a JSON file that can be used to report on the status of the branch.
 	</description>
-	<url>https://github.com/comeon-stockholm/${project.artifactId}</url>
+	<url>https://github.com/comeon-stockholm/git-changelog-maven-plugin</url>
 
 	<licenses>
 		<license>
@@ -32,9 +32,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:git@github.com:comeon-stockholm/${project.artifactId}.git</connection>
-		<developerConnection>scm:git:git@github.com:comeon-stockholm/${project.artifactId}.git</developerConnection>
-		<url>git@github.com:comeon-stockholm/${project.artifactId}.git</url>
+		<connection>scm:git:git@github.com:comeon-stockholm/git-changelog-maven-plugin.git</connection>
+		<developerConnection>scm:git:git@github.com:comeon-stockholm/git-changelog-maven-plugin.git</developerConnection>
+		<url>git@github.com:comeon-stockholm/git-changelog-maven-plugin.git</url>
 	</scm>
 
 	<dependencies>
