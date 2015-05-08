@@ -15,7 +15,7 @@ Add to pom.xml:
 	<plugin>
 		<groupId>com.comeon.mojo</groupId>
 		<artifactId>git-changelog-maven-plugin</artifactId>
-		<version>1.1</version>		
+		<version>1.0.0</version>		
 	</plugin>
 
 Then run:
@@ -31,7 +31,7 @@ Default phase is `prepare-package`.
 	<plugin>
 		<groupId>com.comeon.mojo</groupId>
 		<artifactId>git-changelog-maven-plugin</artifactId>
-		<version>1.1</version>
+		<version>1.0.0</version>
 		<executions>
 			<execution>
 				<id>git-changelog</id>
@@ -49,7 +49,7 @@ Configuration, with defaults:
 	<plugin>
 		<groupId>com.comeon.mojo</groupId>
 		<artifactId>git-changelog-maven-plugin</artifactId>
-		<version>1.1</version>
+		<version>1.0.0</version>
 		<configuration>
 			<outputDirectory>${project.build.directory}</outputDirectory>
 			<masterBranch>master</masterBranch>
