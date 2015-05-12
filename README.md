@@ -82,6 +82,48 @@ Note: if there are no local branch `master`, you will need to use `origin/master
 
 `commitTime` is a [UNIX timestamp](http://en.wikipedia.org/wiki/Unix_time) in milliseconds, unlike git's seconds, so it's ready to parse by Javascript, Java or any other language that takes UNIX time as input (all of them?). 
 
+# Example jQuery-based viewer
+
+We use something similar to this + styling and processing of issues found in messages, etc. It can be used as a base for your own needs.
+
+```html
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Changelog</title>
+</head>
+<body>
+<table>
+<tr>
+    <th>Which</th>
+    <th>When</th>
+    <th>What</th>
+    <th>Who</th>
+</tr>
+</table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+<script>
+    var $table = $('table');
+    var jqxhr = $.getJSON("changelog.json");
+
+    jqxhr.done(function (changes) {
+        $.each(changes.commits, function(index, commit) {
+            var $tr = $('<tr>');
+
+            $tr.append('<td>' + commit.id.substring(0, 6) + '...');
+            $tr.append('<td>' + moment(commit.commitTime).format('YYYY-MM-DD HH:mm'));
+            $tr.append('<td>' + commit.fullMessage);
+            $tr.append('<td>' + commit.authorName + ' <' + commit.authorEmail + '>');
+            $table.append($tr);
+        });
+    });
+</script>
+</body>
+</html>
+```
+
 # See also
 
 Plugin was inspired by [maven-gitlog-plugin](https://github.com/danielflower/maven-gitlog-plugin) which we used (and contributed to), but in the end our use cases were to dissimilar, that plugin tries to get a changelog and tag releases, plus have multiple kinds of output and configuration available, we just really needed "What's happened since last release?" and other tools can process the JSON, so we ended up making a different tool.
