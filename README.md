@@ -8,7 +8,7 @@ Note: the plugin will skip merge commits (commits with more than one parent) and
 
 # Minimal example
 
-Assuming your master branch is called `master` and you are on some other branch:
+Assuming your master branch is `origin/master` and you are on some other branch:
 
 Add to pom.xml:
 
@@ -16,7 +16,7 @@ Add to pom.xml:
 <plugin>
 	<groupId>com.comeon.mojo</groupId>
 	<artifactId>git-changelog-maven-plugin</artifactId>
-	<version>1.0.0</version>		
+	<version>1.0.1</version>
 </plugin>
 ```
 
@@ -34,7 +34,7 @@ Default phase is `prepare-package`.
 <plugin>
 	<groupId>com.comeon.mojo</groupId>
 	<artifactId>git-changelog-maven-plugin</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<executions>
 		<execution>
 			<id>git-changelog</id>
@@ -54,15 +54,13 @@ Configuration, with defaults:
 <plugin>
 	<groupId>com.comeon.mojo</groupId>
 	<artifactId>git-changelog-maven-plugin</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<configuration>
 		<outputDirectory>${project.build.directory}</outputDirectory>
-		<masterBranch>master</masterBranch>
+		<masterBranch>origin/master</masterBranch>
 	</configuration>
 </plugin>
 ```
-
-Note: if there are no local branch `master`, you will need to use `origin/master`, for instance when this is done in automated builds. Will be updated in future release.
 
 # JSON Output
 

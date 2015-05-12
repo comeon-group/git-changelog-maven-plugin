@@ -19,7 +19,7 @@ public class GitReleaseLogMojo extends AbstractMojo {
 	@Parameter(property = "project.build.directory")
 	private File outputDirectory;
 
-	@Parameter(defaultValue = "master")
+	@Parameter(defaultValue = "origin/master")
 	private String masterBranch;
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
