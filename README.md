@@ -56,6 +56,8 @@ Configuration, with defaults:
 		</configuration>
 	</plugin>
 
+Note: if there are no local branch `master`, you will need to use `origin/master`, for instance when this is done in automated builds. Will be updated in future release.
+
 # JSON Output
 
 	{
