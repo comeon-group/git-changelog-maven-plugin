@@ -12,11 +12,13 @@ Assuming your master branch is called `master` and you are on some other branch:
 
 Add to pom.xml:
 
-	<plugin>
-		<groupId>com.comeon.mojo</groupId>
-		<artifactId>git-changelog-maven-plugin</artifactId>
-		<version>1.0.0</version>		
-	</plugin>
+```xml
+<plugin>
+	<groupId>com.comeon.mojo</groupId>
+	<artifactId>git-changelog-maven-plugin</artifactId>
+	<version>1.0.0</version>		
+</plugin>
+```
 
 Then run:
 
@@ -28,57 +30,60 @@ A file `target/changelog.json` is created, containing the commits here but not i
 
 Default phase is `prepare-package`.
 
-	<plugin>
-		<groupId>com.comeon.mojo</groupId>
-		<artifactId>git-changelog-maven-plugin</artifactId>
-		<version>1.0.0</version>
-		<executions>
-			<execution>
-				<id>git-changelog</id>
-				<goals>
-					<goal>generate</goal>
-				</goals>
-			</execution>
-		</executions>
-	</plugin>
+```xml
+<plugin>
+	<groupId>com.comeon.mojo</groupId>
+	<artifactId>git-changelog-maven-plugin</artifactId>
+	<version>1.0.0</version>
+	<executions>
+		<execution>
+			<id>git-changelog</id>
+			<goals>
+				<goal>generate</goal>
+			</goals>
+		</execution>
+	</executions>
+</plugin>
+```
 
 # Configure
 
 Configuration, with defaults:
 
-	<plugin>
-		<groupId>com.comeon.mojo</groupId>
-		<artifactId>git-changelog-maven-plugin</artifactId>
-		<version>1.0.0</version>
-		<configuration>
-			<outputDirectory>${project.build.directory}</outputDirectory>
-			<masterBranch>master</masterBranch>
-		</configuration>
-	</plugin>
+```xml
+<plugin>
+	<groupId>com.comeon.mojo</groupId>
+	<artifactId>git-changelog-maven-plugin</artifactId>
+	<version>1.0.0</version>
+	<configuration>
+		<outputDirectory>${project.build.directory}</outputDirectory>
+		<masterBranch>master</masterBranch>
+	</configuration>
+</plugin>
+```
 
 Note: if there are no local branch `master`, you will need to use `origin/master`, for instance when this is done in automated builds. Will be updated in future release.
 
 # JSON Output
 
-	{
-	  "currentBranch": "feature/cool-feature",
-	  "masterBranch": "master",
-	  "commits": [
-	    {
-	      "id": "79e0b7f8c020198717982cb45f527dbc70345728",
-	      "commitTime": 1429722332000,
-	      "authorName": "Ralph Wiggum",
-	      "authorEmail": "ralph.wiggum@simpsons.com",
-	      "committerName": "Chief Wiggum",
-	      "committerEmail": "chief.wiggum@simpsons.com",
-	      "shortMessage": "Named my cat Mittens.",
-	      "fullMessage": "Named my cat Mittens.\nMy cat's name is Mittens."
-	    },
-	    
-	    ...
-	    
-	  ]
-	}
+```json
+{
+  "currentBranch": "feature/cool-feature",
+  "masterBranch": "master",
+  "commits": [
+    {
+      "id": "79e0b7f8c020198717982cb45f527dbc70345728",
+      "commitTime": 1429722332000,
+      "authorName": "Ralph Wiggum",
+      "authorEmail": "ralph.wiggum@simpsons.com",
+      "committerName": "Chief Wiggum",
+      "committerEmail": "chief.wiggum@simpsons.com",
+      "shortMessage": "Named my cat Mittens.",
+      "fullMessage": "Named my cat Mittens.\nMy cat's name is Mittens."
+    },
+  ]
+}
+```
 
 `commitTime` is a [UNIX timestamp](http://en.wikipedia.org/wiki/Unix_time) in milliseconds, unlike git's seconds, so it's ready to parse by Javascript, Java or any other language that takes UNIX time as input (all of them?). 
 
